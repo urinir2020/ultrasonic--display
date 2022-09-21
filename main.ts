@@ -1,4 +1,12 @@
-TM1650.on()
+input.onPinPressed(TouchPin.P1, function () {
+    basic.showIcon(IconNames.Heart)
+    SuperBit.MotorRun(SuperBit.enMotors.M1, 255)
+})
+input.onPinReleased(TouchPin.P1, function () {
+    basic.showIcon(IconNames.No)
+    SuperBit.MotorRun(SuperBit.enMotors.M1, 0)
+})
 basic.forever(function () {
-    TM1650.showNumber(ModuleWorld_Digital.Ultrasonic(ModuleWorld_Digital.mwDigitalNum.P0P1))
+    basic.showNumber(pins.analogReadPin(AnalogPin.P1))
+    SuperBit.MotorRun(SuperBit.enMotors.M1, pins.analogReadPin(AnalogPin.P1) / 4)
 })
